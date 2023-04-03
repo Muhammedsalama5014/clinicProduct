@@ -1,5 +1,15 @@
-<?php include("inc/header.php");?>
-  
+<?php use Clinic\Classes\Models\Blog;
+
+include("inc/header.php");?>
+  <?php
+
+if(isset( $_GET['id'] )){
+    $blog = new Blog();
+    $blog = $blog->selectById($_GET['id']);
+} else {
+    $request->redirect("blog.php");
+}
+?>
         <!-- Page Title -->
         <div class="page-title">
             <div class="container">
@@ -39,20 +49,12 @@
                                     <li><a href="#">Development</a></li>
                                 </ul>
                                     
-                                <h3>How to Be a Work From Home Professional</h3>
-                                
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In necessitatibus provident facere, reiciendis voluptate dolorem iste consectetur veniam aperiam suscipit ad ipsum et labore a repellendus debitis explicabo quisquam obcaecati....</p>
-                                
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque eum alias debitis suscipit, sint dignissimos minus quisquam recusandae nostrum quas eligendi odit, fugiat eius rem. Cumque, labore placeat! Velit, vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, iste? Aut ipsam consequuntur non rem tenetur dolore consequatur ducimus a labore excepturi quae nisi, quisquam, maxime voluptates magnam aliquid. Cupiditate!</p>
-                                
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, iste? Aut ipsam consequuntur non rem tenetur dolore consequatur ducimus a labore excepturi quae nisi, quisquam, maxime voluptates magnam aliquid. Cupiditate!</p>
-                                
-                                <blockquote class="blockquote">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, iste? Aut ipsam consequuntur non rem tenetur dolore consequatur ducimus a labore excepturi quae nisi, quisquam, maxime voluptates magnam aliquid. Cupiditate.</p>
-                                </blockquote>
-                                
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque eum alias debitis suscipit, sint dignissimos minus quisquam recusandae nostrum quas eligendi odit, fugiat eius rem. Cumque, labore placeat! Velit, vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, iste? Aut ipsam consequuntur non rem tenetur dolore consequatur ducimus a labore excepturi quae nisi, quisquam, maxime voluptates magnam aliquid. Cupiditate!</p>
-                                
+                                <h3><?php echo $blog['title'] ?></h3>
+
+                                <p>
+                                    <?php echo $blog['content'] ?>
+                                </p>
+
                                 <div class="share-post">
                                     <ul>
                                         <li><a href="#"><i class="icofont-facebook"></i></a></li>

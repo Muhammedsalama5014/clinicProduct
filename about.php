@@ -1,5 +1,20 @@
 <?php include("inc/header.php");?>
-  
+  <?php
+  use Clinic\Classes\Models\Setting;
+  use Clinic\Classes\Models\Product;
+  use Clinic\Classes\Models\Order;
+
+  $setting = new Setting();
+  $aboutHeader = $setting->getAboutHeader();
+  $aboutBody = $setting->getAboutBody();
+
+  $product = new Product();
+  $order = new Order();
+
+  $productsCount = $product->getCount();
+  $ordersCount = $order->getCount();
+
+  ?>
         <!-- Page Title -->
         <div class="page-title">
             <div class="container">
@@ -24,7 +39,7 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Welcome to Promedi</h2>
-                    <p>We are ready to build your dream future Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p><?php echo $aboutHeader ?></p>
                 </div>
                 
                 <div class="row"> 
@@ -73,7 +88,7 @@
                         <div class="col-lg-6">
                             <span>About our medical</span>
                             <h3>Happiness is nothing more than good health and a bad memory</h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                            <p><?= $aboutBody ?></p>
                             <ul>
                                 <li>Qualified Doctors</li>
                                 <li>Outdoor Checkup</li>
@@ -123,16 +138,16 @@
                     <div class="col-sm-6 col-md-6 col-lg-3"> 
                         <div class="single-counter">
                             <i class="icofont-simple-smile"></i>
-                            <h3 class="counter">25000</h3>
-                            <p>Happy Patients</p>
+                            <h3 class="counter"><?= $productsCount ?></h3>
+                            <p>Products</p>
                         </div>
                     </div>
                     
                     <div class="col-sm-6 col-md-6 col-lg-3"> 
                         <div class="single-counter">
                             <i class="icofont-doctor-alt"></i>
-                            <h3 class="counter">180</h3>
-                            <p>Experienced Doctors</p>
+                            <h3 class="counter"><?= $ordersCount ?></h3>
+                            <p>Orders</p>
                         </div>
                     </div>
                     
